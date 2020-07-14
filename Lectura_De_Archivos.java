@@ -5,11 +5,12 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Lectura_De_Archivos {
-	public static TreeMap<Float, String> LeerDatos() {
-		TreeMap<Float, String> Arbol = new TreeMap<Float, String>(Collections.reverseOrder());
+	
+	public static TreeMap<Integer, String> LeerDatos() {
+		TreeMap<Integer, String> Arbol = new TreeMap<Integer, String>(Collections.reverseOrder());
 		String nombre, apellido, nomyape, todo;
-		int legajo, i = 0;
-		float nota1, nota2, nota3, promedio = 11;
+		int legajo=0, i = 0;
+		float nota1, nota2, nota3, promedio;
 		try {
 			File Archivo = new File("file.txt");
 			Scanner a = new Scanner(Archivo);
@@ -21,8 +22,8 @@ public class Lectura_De_Archivos {
 					nombre = partes[1];
 					apellido = partes[2];
 					nota1 = Float.parseFloat(partes[3]);
-					nota2 = Float.parseFloat(partes[3]);
-					nota3 = Float.parseFloat(partes[3]);
+					nota2 = Float.parseFloat(partes[4]);
+					nota3 = Float.parseFloat(partes[5]);
 					nomyape = nombre + " " + apellido;
 					promedio = (nota1 + nota2 + nota3) / 3;
 					todo = legajo + " " + nomyape + " " + promedio;
@@ -30,7 +31,7 @@ public class Lectura_De_Archivos {
 					todo = data;
 					i = 1;
 				}
-				Arbol.put(promedio, todo);
+				Arbol.put(legajo, todo);
 
 			}
 			a.close();

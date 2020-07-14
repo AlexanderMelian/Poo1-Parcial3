@@ -5,7 +5,7 @@ import java.io.FileWriter;
 
 public class Creacion_De_Archivos {
 
-	public static void Crear_Archivo(TreeMap<Float, String> arbolito) {
+	public static void Crear_Archivo(TreeMap<Integer, String> arbolito) {
 		try {
 			File Archivo = new File("file2.txt");
 			if (Archivo.createNewFile()) {
@@ -14,12 +14,14 @@ public class Creacion_De_Archivos {
 				System.out.println("El nuevo archivo estaba creado");
 			}
 		} catch (IOException x) {
-			System.out.println("OcurriÃ³ un error: ");
+			System.out.println("Ocurrió un error: ");
 			x.printStackTrace();
 		}
 		try {
 			FileWriter myWriter = new FileWriter("file2.txt");
-			for (Float i : arbolito.keySet()) {
+			myWriter.write(arbolito.get(0)+"\n");
+			for (Integer i : arbolito.keySet()) {
+				if(i==0){continue;}
 				String dato = arbolito.get(i);
 				myWriter.write(dato + "\n");
 			}
