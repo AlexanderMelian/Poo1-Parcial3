@@ -6,11 +6,11 @@ import java.util.TreeMap;
 
 public class Lectura_De_Archivos {
 	
-	public static TreeMap<Integer, String> LeerDatos() {
-		TreeMap<Integer, String> Arbol = new TreeMap<Integer, String>(Collections.reverseOrder());
-		String nombre, apellido, nomyape, todo;
+	public static TreeMap<Integer, Alumno> LeerDatos() {
+		TreeMap<Integer, Alumno> Arbol = new TreeMap<Integer, Alumno>(Collections.reverseOrder());
+		String nombre, apellido;
 		int legajo=0, i = 0;
-		float nota1, nota2, nota3, promedio;
+		float nota1, nota2, nota3;
 		try {
 			File Archivo = new File("file.txt");
 			Scanner a = new Scanner(Archivo);
@@ -24,15 +24,12 @@ public class Lectura_De_Archivos {
 					nota1 = Float.parseFloat(partes[3]);
 					nota2 = Float.parseFloat(partes[4]);
 					nota3 = Float.parseFloat(partes[5]);
-					nomyape = nombre + " " + apellido;
-					promedio = (nota1 + nota2 + nota3) / 3;
-					todo = legajo + " " + nomyape + " " + promedio;
-				} else {
-					todo = data;
+					Arbol.put(legajo, new Alumno(nombre, apellido, nota1, nota2, nota3, legajo));
+				}
+				else{
+					Arbol.put(0, new Alumno (data, data, 1,1,1,0));
 					i = 1;
 				}
-				Arbol.put(legajo, todo);
-
 			}
 			a.close();
 			System.out.println("Primer achivo cerrado");
